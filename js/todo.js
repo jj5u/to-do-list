@@ -35,14 +35,17 @@ function paintTodo(newTodo) {
 function handleTodoSubmit(event) {
   event.preventDefault();
   const newTodo = todoInput.value;
+  console.log(newTodo);
   const newTodoObj = {
     text: newTodo,
-    id: Date.now(), //almost random
+    id: Date.now().toString(), //almost random
   };
-  console.newTodoObj;
+  //   console.newTodoObj;
   todos.push(newTodoObj);
   paintTodo(newTodoObj);
   saveTodos();
+  todoInput.value = "";
+  console.log(getTodos);
 }
 todoButton.addEventListener("click", handleTodoSubmit);
 
