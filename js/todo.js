@@ -1,21 +1,19 @@
-"use strict";
-
 const todo = document.getElementById("todo");
 const todoInput = document.querySelector(".write_todo input");
 const todoButton = document.querySelector(".write_todo button");
 const todoList = document.querySelector(".todo_list");
 
-const TODO_KEY = "todoSave";
+const todoKey = "todoSave";
 let todos = [];
 
 function saveTodos() {
-  localStorage.setItem(TODO_KEY, JSON.stringify(todos));
+  localStorage.setItem(todoKey, JSON.stringify(todos));
 }
 
 function deleteTodo(event) {
   const li = event.target.parentElement;
   li.remove();
-  todos = todos.filter((todo) => todo.id !== parseInt(li.id));
+  todos.filter((todo) => todo.id !== parseInt(li.id));
   saveTodos();
 }
 
@@ -32,27 +30,25 @@ function paintTodo(newTodo) {
   todoList.appendChild(li);
 }
 
-function handleTodoSubmit(event) {
-  event.preventDefault();
+function handleTodoSubmit(e) {
+  e.preventDefault();
   const newTodo = todoInput.value;
-  console.log(newTodo);
   const newTodoObj = {
     text: newTodo,
-    id: Date.now().toString(), //almost random
+    id: parseInt(Date.now()), //almost random
   };
-  //   console.newTodoObj;
-  todos.push(newTodoObj);
+  console.log(newTodoObj);
+  todos.push(newTodoObj.text);
   paintTodo(newTodoObj);
   saveTodos();
   todoInput.value = "";
-  console.log(getTodos);
 }
 todoButton.addEventListener("click", handleTodoSubmit);
 
-const getTodos = localStorage.getItem(TODO_KEY);
+const getTodos = localStorage.getItem(todoKey);
 
 if (saveTodos !== null) {
   const parseTodos = JSON.parse(getTodos);
   todos = parseTodos;
-  parseTodos.forEach(paintTodo);
+  parseTodos.forEach(saveTodos);
 }
