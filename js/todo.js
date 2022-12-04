@@ -1,3 +1,4 @@
+"use strict";
 const todo = document.getElementById("todo");
 const todoInput = document.querySelector(".write_todo input");
 const todoButton = document.querySelector(".write_todo button");
@@ -5,10 +6,6 @@ const todoList = document.querySelector(".todo_list");
 
 const todoKey = "todoSave";
 let todos = [];
-
-function saveTodos() {
-  localStorage.setItem(todoKey, JSON.stringify(todos));
-}
 
 function deleteTodo(event) {
   const li = event.target.parentElement;
@@ -38,13 +35,14 @@ function handleTodoSubmit(e) {
     id: parseInt(Date.now()), //almost random
   };
   console.log(newTodoObj);
-  todos.push(newTodoObj.text);
-  paintTodo(newTodoObj);
+  todos.push(newTodo);
+  paintTodo(newTodo);
   saveTodos();
   todoInput.value = "";
 }
 todoButton.addEventListener("click", handleTodoSubmit);
 
+const saveTodos = localStorage.setItem(todoKey, JSON.stringify(todos));
 const getTodos = localStorage.getItem(todoKey);
 
 if (saveTodos !== null) {
