@@ -1,0 +1,109 @@
+@import "reset.css";
+.none {
+  display: none;
+}
+header {
+  width: 100%;
+  min-height: 45px;
+  display: flex;
+  padding: 10px;
+  justify-content: flex-end;
+  align-items: center;
+
+  background-color: blue;
+  color: #fff;
+}
+body {
+  overflow: hidden;
+}
+main {
+  display: grid;
+  grid-template-columns: 3fr 1fr;
+  min-height: calc(100vh - 45px);
+}
+section {
+  height: 100%;
+}
+section:first-of-type {
+  background-color: #000;
+  color: #fff;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  position: relative;
+}
+
+#weather span {
+  padding: 0 5px;
+}
+
+#clock {
+  padding: 10px 20px;
+  font-family: "Kenia", cursive;
+  text-align: right;
+}
+.quotes {
+  position: absolute;
+  padding: 10px 20px;
+  margin-left: auto;
+  font-family: "Roboto Mono", monospace;
+  font-size: 12rem;
+  font-weight: 600;
+  letter-spacing: -48.2px;
+  word-break: break-all;
+}
+#clock span {
+  font-size: 7rem;
+}
+form.login {
+  height: 24px;
+}
+.todo .write_todo,
+form.login {
+  padding: 3px;
+  display: flex;
+  gap: 3px;
+}
+button {
+  border-style: none;
+  border-radius: 0;
+  background-color: #000;
+  color: #fff;
+  text-align: left;
+  white-space: nowrap;
+  word-break: keep-all;
+}
+input {
+  width: 100%;
+  border-radius: 0;
+  border-style: none;
+  border: 1px solid #000;
+}
+input:focus-within {
+  outline: none;
+  background-color: yellow;
+}
+#todo {
+  position: relative;
+}
+ul.todo_list::before {
+  content: "my todo list";
+  font-weight: 700;
+}
+ul.todo_list {
+  padding: 10px;
+  background-color: red;
+  position: absolute;
+  width: unset;
+  left: -150%;
+}
+ul.todo_list li {
+  background-color: #fff;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-top: 5px;
+  padding: 3px;
+  gap: 5px;
+  width: 100%;
+}
