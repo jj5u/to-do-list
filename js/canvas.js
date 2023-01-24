@@ -15,3 +15,24 @@ ctx.fill();
 ctx.beginPath();
 ctx.arc(169, 280, 3, 0, 2 * Math.PI);
 ctx.stroke();
+
+const colors = ['red','yellow','blue']
+let xPoint = ""
+let yPoint = ""
+
+function draw(e) {
+const color = colors[Math.floor(Math.random()*colors.length)]
+ctx.moveTo(xPoint,yPoint);
+ctx.lineTo(e.offsetX,e.offsetY);
+ctx.strokeStyle = color
+ctx.stroke();
+ctx.beginPath()
+}
+function onClick(e) {
+xPoint = e.offsetX
+yPoint = e.offsetY
+ctx.moveTo(xPoint,yPoint);
+canvas.addEventListener('mousemove',draw);
+}
+canvas.addEventListener('click',onClick)
+
