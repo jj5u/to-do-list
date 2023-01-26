@@ -72,6 +72,7 @@ button {
   text-align: left;
   white-space: nowrap;
   word-break: keep-all;
+  cursor: pointer;
 }
 input {
   width: 100%;
@@ -112,4 +113,10 @@ canvas {
   width: 300px;
   height: 300px;
   border: 1px solid #000;
+}
+.color-option {
+  display: inline-flex;
+  width: 20px;
+  height: 20px;
+  cursor: pointer;
 }
