@@ -6,6 +6,7 @@ const colorOption = Array.from(document.getElementsByClassName("color-option"));
 const strokeModeBtn = document.querySelector(".mode-btn");
 const resetBtn = document.querySelector(".reset-btn");
 const eraserBtn = document.querySelector(".eraser-btn");
+const inputImage = document.getElementById("file-image");
 const CANVAS_SIZE = 300;
 canvas.width = CANVAS_SIZE;
 canvas.height = CANVAS_SIZE;
@@ -58,6 +59,16 @@ function eraseCanvas(e) {
   eraserMode = false ? (eraserBtn.innerText = "eraser") : (eraserBtn.innerText = "eraser on");
   eraserMode = false ? (ctx.strokeStyle = color.value) : (ctx.strokeStyle = "#fff");
 }
+function onFileChange(e) {
+  const files = e.target.files[0];
+  const url = URL.createObjectURL(files);
+  const img = new Image();
+  img.src = url;
+  img.onload = function () {
+    ctx.drawImage(img, 0, 0, CANVAS_SIZE, CANVAS_SIZE);
+    inputImage.value = null;
+  };
+}
 canvas.addEventListener("mousemove", onMousemove);
 canvas.addEventListener("mousedown", startPainting);
 canvas.addEventListener("mouseup", cancelPainting);
@@ -70,3 +81,4 @@ colorOption.forEach((color) => {
 });
 resetBtn.addEventListener("click", resetCanvas);
 eraserBtn.addEventListener("click", eraseCanvas);
+inputImage.addEventListener("change", onFileChange);
