@@ -2,12 +2,14 @@
 const todo = document.getElementById("todo");
 const todoInput = document.querySelector(".write_todo input");
 const todoButton = document.querySelector(".write_todo button");
+
 const toDoUl = document.querySelector(".todo_list");
 
 const todoKey = "todoSave";
 let toDoList = [];
 function updateTodo() {
   localStorage.setItem(todoKey, JSON.stringify(toDoList));
+
 }
 function deleteTodo(event) {
   const li = event.target.parentElement;
@@ -41,6 +43,7 @@ function addTodo(e) {
   updateTodo();
 }
 todoButton.addEventListener("click", addTodo);
+
 const savedTodo = localStorage.getItem(todoKey);
 if (savedTodo !== null) {
   const parseToDos = JSON.parse(savedTodo);
@@ -48,4 +51,5 @@ if (savedTodo !== null) {
   toDoList.forEach((item) => {
     paintTodo(item);
   });
+
 }
